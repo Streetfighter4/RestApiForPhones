@@ -10,12 +10,6 @@ public class SmartPhoneData {
 	
 	private SmartPhoneData() {
 		phones = new ArrayList<>();
-		
-		SmartPhone phone1 = new SmartPhone(1, "Sumsung", "galaxy", 13.0f, 2.0f, 2014, 8);
-		SmartPhone phone2 = new SmartPhone(2, "LG", "G3", 10.0f, 3.0f, 2013, 6);
-		
-		phones.add(phone1);
-		phones.add(phone2);
 	}
 	
 	public static SmartPhoneData getData() {
@@ -44,19 +38,54 @@ public class SmartPhoneData {
 		}
 		return filtered;
 	}	
-	public List<SmartPhone> filteredByModel() {
-		return null;
+	public List<SmartPhone> filteredByModel(String model) {
+		List<SmartPhone> filtered = new ArrayList<>();
+		
+		for (SmartPhone smartPhone : phones) {
+			if (smartPhone.getManufacturer().equals(model)) {
+				filtered.add(smartPhone);
+			}
+		}
+		return filtered;
 	}
-	public List<SmartPhone> filteredByCameraMP() {
-		return null;
+	public List<SmartPhone> filteredByCameraMP(float cameraMP) {
+		List<SmartPhone> filtered = new ArrayList<>();
+		
+		for (SmartPhone smartPhone : phones) {
+			if (smartPhone.getManufacturer().equals(cameraMP)) {
+				filtered.add(smartPhone);
+			}
+		}
+		return filtered;
 	}
-	public List<SmartPhone> filteredByProcesorGHz() {
-		return null;
+	public List<SmartPhone> filteredByProcesorGHz(float procesorGHz) {
+		List<SmartPhone> filtered = new ArrayList<>();
+		
+		for (SmartPhone smartPhone : phones) {
+			if (smartPhone.getManufacturer().equals(procesorGHz)) {
+				filtered.add(smartPhone);
+			}
+		}
+		return filtered;
 	}
-	public List<SmartPhone> filteredByYear() {
-		return null;
+	public List<SmartPhone> filteredByYear(int year) {
+		List<SmartPhone> filtered = new ArrayList<>();
+		
+		for (SmartPhone smartPhone : phones) {
+			if (smartPhone.getManufacturer().equals(year)) {
+				filtered.add(smartPhone);
+			}
+		}
+		return filtered;
 	}
-	public List<SmartPhone> filteredByMemoryRam() {
-		return null;
+	public List<SmartPhone> filteredByMemoryRam(int memoryRam) {
+		List<SmartPhone> filtered = new ArrayList<>();
+		
+		for (SmartPhone smartPhone : phones) {
+			if (smartPhone.getManufacturer().equals(memoryRam)) {
+				filtered.add(smartPhone);
+			}
+		}
+		return filtered;
 	}
 }

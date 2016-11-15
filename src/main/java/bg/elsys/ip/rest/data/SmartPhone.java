@@ -1,6 +1,7 @@
 package bg.elsys.ip.rest.data;
 
 public class SmartPhone {
+	private static int countId = 0;
 	private int id;
 	private String manufacturer;
 	private String model;
@@ -9,16 +10,21 @@ public class SmartPhone {
 	private int year;
 	private int memoryRam;
 	
-	public SmartPhone(int id, String manufacturer, String model, float cameraMP,
+	public SmartPhone(String manufacturer, String model, float cameraMP,
 			float procesorGHz, int year, int memoryRam) {
 		super();
-		this.id = id;
+		countId++;
+		this.id = countId;
 		this.manufacturer = manufacturer;
 		this.model = model;
 		this.cameraMP = cameraMP;
 		this.procesorGHz = procesorGHz;
 		this.year = year;
 		this.memoryRam = memoryRam;
+	}
+
+	public SmartPhone() {
+		this("", "", 0.0f, 0.0f, 0, 0);
 	}
 	
 	public int getId() {
