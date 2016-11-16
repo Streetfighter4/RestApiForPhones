@@ -23,10 +23,8 @@ function getData() {
 
 $(document).ready(function() {
 	getData();
-	console.log('ivan');
 	
 	$('#new-phone-form').submit(function(e) {
-		console.log('call')
 		e.preventDefault();
 		
 		var data = {
@@ -44,5 +42,12 @@ $(document).ready(function() {
 			url: 'api/phones',
 			contentType: 'application/json'
 		});
+	
+		document.getElementById("new-phone-manufacturer").value = "";
+	    document.getElementById("new-phone-model").value = "";
+	    document.getElementById("new-phone-cameraMP").value = "";
+	    document.getElementById("new-phone-procesorGHz").value = "";
+	    document.getElementById("new-phone-year").value = "";
+	    document.getElementById("new-phone-memoryRam").value = "";
 	});
 });

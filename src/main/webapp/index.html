@@ -5,18 +5,30 @@
 <script
 	src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="scripts.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
 <title>PhoneShop</title>
 </head>
 <body>
 	<form id="new-phone-form">
-		<input type="text" id="new-phone-manufacturer"></input>
-		<input type="text" id="new-phone-model"></input>
-		<input type="text" id="new-phone-cameraMP"></input>
-		<input type="text" id="new-phone-procesorGHz"></input>
-		<input type="text" id="new-phone-year"></input>
-		<input type="text" id="new-phone-memoryRam"></input>
-		<input type="submit">
+		<input type="text" id="new-phone-manufacturer" required/>
+		<input type="text" id="new-phone-model" required/>
+		<input type="number" id="new-phone-cameraMP" required/>
+		<input type="number" id="new-phone-procesorGHz" required/>
+		<input type="number" id="new-phone-year" required/>
+		<input type="number" id="new-phone-memoryRam" required/>
+		<input type="submit" value="Create">
 	</form>
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Manufacturer</th>
+	    	<th>Model</th>
+	    	<th>Camera(MP)</th>
+	    	<th>Processor(GHz)</th>
+	    	<th>Year</th>
+	    	<th>RAM Memory</th>
+	    </tr>
+	</table>
 	<table id="phonesTable"></table>
 </body>
 </html>
