@@ -1,10 +1,11 @@
-function getData() {
+function getData(filter) {
 	$.ajax({
 		url: "http://localhost:8080/rest/api/phones",
 		type: "GET",
 		dataType: "json",
+		data: filter,
 		success: function(data) {
-			console.log(data);
+			$("#phonesTable tr").remove();
 			$.each(data, function(index){
 				var tr = $('<tr>');
 				tr.append('<td>' + data[index].id +'</td>');
@@ -22,7 +23,7 @@ function getData() {
 }
 
 $(document).ready(function() {
-	getData();
+	getData("");
 	
 	$('#new-phone-form').submit(function(e) {
 		e.preventDefault();
@@ -49,5 +50,20 @@ $(document).ready(function() {
 	    document.getElementById("new-phone-procesorGHz").value = "";
 	    document.getElementById("new-phone-year").value = "";
 	    document.getElementById("new-phone-memoryRam").value = "";
+	});
+	
+	$('#filter-phone-form').submit(function(e) {
+		e.preventDefault();
+		
+		var filter = {
+			manufacturerFilter: $('#filter-phone-manufacturer').val(),
+			modelFilter: $('#new-phone-model').val(),
+			cameraMPFilter: $('#new-phone-cameraMP').val(),
+			procesorGHzFilter: $('#new-phone-procesorGHz').val(),
+			yearFilter: $('#new-phone-year').val(),
+			memoryRamFilter: $('#new-phone-memoryRam').val()
+		}	
+		getData(filter);
+		
 	});
 });

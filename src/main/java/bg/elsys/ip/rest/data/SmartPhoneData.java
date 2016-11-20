@@ -56,7 +56,6 @@ public class SmartPhoneData {
 		if (data == null) {
 			data = new SmartPhoneData();
 		}
-		
 		return data;
 	}
 
@@ -68,61 +67,61 @@ public class SmartPhoneData {
 		phones.add(item);
 	}
 	
-	public List<SmartPhone> filteredByManufacturer(String manuf) {
+	public static List<SmartPhone> filteredByManufacturer(String manuf, List<SmartPhone> phonesList) {
 		List<SmartPhone> filtered = new ArrayList<>();
 		
-		for (SmartPhone smartPhone : phones) {
+		for (SmartPhone smartPhone : phonesList) {
 			if (smartPhone.getManufacturer().equals(manuf)) {
 				filtered.add(smartPhone);
 			}
 		}
 		return filtered;
 	}	
-	public List<SmartPhone> filteredByModel(String model) {
+	public static List<SmartPhone> filteredByModel(String model , List<SmartPhone> phonesList) {
 		List<SmartPhone> filtered = new ArrayList<>();
 		
-		for (SmartPhone smartPhone : phones) {
-			if (smartPhone.getManufacturer().equals(model)) {
+		for (SmartPhone smartPhone : phonesList) {
+			if (smartPhone.getModel().equals(model)) {
 				filtered.add(smartPhone);
 			}
 		}
 		return filtered;
 	}
-	public List<SmartPhone> filteredByCameraMP(float cameraMP) {
+	public static List<SmartPhone> filteredByCameraMP(float cameraMP, List<SmartPhone> phonesList) {
 		List<SmartPhone> filtered = new ArrayList<>();
 		
-		for (SmartPhone smartPhone : phones) {
-			if (smartPhone.getManufacturer().equals(cameraMP)) {
+		for (SmartPhone smartPhone : phonesList) {
+			if (smartPhone.getCameraMP() == cameraMP) {
 				filtered.add(smartPhone);
 			}
 		}
 		return filtered;
 	}
-	public List<SmartPhone> filteredByProcesorGHz(float procesorGHz) {
+	public static List<SmartPhone> filteredByProcesorGHz(float procesorGHz, List<SmartPhone> phonesList) {
 		List<SmartPhone> filtered = new ArrayList<>();
 		
-		for (SmartPhone smartPhone : phones) {
-			if (smartPhone.getManufacturer().equals(procesorGHz)) {
+		for (SmartPhone smartPhone : phonesList) {
+			if (smartPhone.getProcesorGHz() == procesorGHz) {
 				filtered.add(smartPhone);
 			}
 		}
 		return filtered;
 	}
-	public List<SmartPhone> filteredByYear(int year) {
+	public static List<SmartPhone> filteredByYear(int year, List<SmartPhone> phonesList) {
 		List<SmartPhone> filtered = new ArrayList<>();
 		
-		for (SmartPhone smartPhone : phones) {
-			if (smartPhone.getManufacturer().equals(year)) {
+		for (SmartPhone smartPhone : phonesList) {
+			if (smartPhone.getYear() == year) {
 				filtered.add(smartPhone);
 			}
 		}
 		return filtered;
 	}
-	public List<SmartPhone> filteredByMemoryRam(int memoryRam) {
+	public static List<SmartPhone> filteredByMemoryRam(int memoryRam, List<SmartPhone> phonesList) {
 		List<SmartPhone> filtered = new ArrayList<>();
 		
-		for (SmartPhone smartPhone : phones) {
-			if (smartPhone.getManufacturer().equals(memoryRam)) {
+		for (SmartPhone smartPhone : phonesList) {
+			if (smartPhone.getMemoryRam() == memoryRam) {
 				filtered.add(smartPhone);
 			}
 		}
