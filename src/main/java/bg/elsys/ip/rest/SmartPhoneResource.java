@@ -20,16 +20,16 @@ public class SmartPhoneResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getPhones(
-								//@QueryParam("manufacturerFilter") final String manufacturer,
-								//@QueryParam("modelFilter") final String model,
-								//@QueryParam("cameraMPFilter") final float cameraMP,
-								//@QueryParam("procesorGHzFilter") final float procesorGHz,
-								//@QueryParam("yearFilter") final int year,
-								//@QueryParam("memoryRamFilter") final int memoryRam
+								@QueryParam("manufacturerFilter") final String manufacturer,
+								@QueryParam("modelFilter") final String model,
+								@QueryParam("cameraMPFilter") final Float cameraMP,
+								@QueryParam("procesorGHzFilter") final Float procesorGHz,
+								@QueryParam("yearFilter") final Integer year,
+								@QueryParam("memoryRamFilter") final Integer memoryRam
 			) {
 		
 		List<SmartPhone> phones = SmartPhoneData.getData().getPhones();
-		/*
+		
 		if (manufacturer != null || !("".equals(manufacturer))) {
 			phones = SmartPhoneData.filteredByManufacturer(manufacturer, phones);
 		}
@@ -47,7 +47,7 @@ public class SmartPhoneResource {
 		}
 		if (memoryRam != 0) {
 			phones = SmartPhoneData.filteredByMemoryRam(memoryRam, phones);
-		} */
+		}
 		return Response.ok(phones).build();
 	}
 	

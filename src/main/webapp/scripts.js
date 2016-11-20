@@ -5,6 +5,7 @@ function getData(filter) {
 		dataType: "json",
 		data: filter,
 		success: function(data) {
+			console.log(data);
 			$("#phonesTable tr").remove();
 			$.each(data, function(index){
 				var tr = $('<tr>');
