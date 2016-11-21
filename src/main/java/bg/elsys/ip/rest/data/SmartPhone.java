@@ -8,10 +8,10 @@ public class SmartPhone {
 	private float cameraMP;
 	private float procesorGHz;
 	private int year;
-	private int memoryRam;
+	private float memoryRam;
 	
 	public SmartPhone(String manufacturer, String model, float cameraMP,
-			float procesorGHz, int year, int memoryRam) {
+			float procesorGHz, int year, float memoryRam) {
 		super();
 		countId++;
 		this.id = countId;
@@ -63,10 +63,10 @@ public class SmartPhone {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	public int getMemoryRam() {
+	public float getMemoryRam() {
 		return memoryRam;
 	}
-	public void setMemoryRam(int memoryRam) {
+	public void setMemoryRam(float memoryRam) {
 		this.memoryRam = memoryRam;
 	}
 	

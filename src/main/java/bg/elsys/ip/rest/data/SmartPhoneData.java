@@ -117,7 +117,7 @@ public class SmartPhoneData {
 		}
 		return filtered;
 	}
-	public static List<SmartPhone> filteredByMemoryRam(int memoryRam, List<SmartPhone> phonesList) {
+	public static List<SmartPhone> filteredByMemoryRam(float memoryRam, List<SmartPhone> phonesList) {
 		List<SmartPhone> filtered = new ArrayList<>();
 		
 		for (SmartPhone smartPhone : phonesList) {

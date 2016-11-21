@@ -3,6 +3,7 @@ package bg.elsys.ip.rest;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -20,34 +21,41 @@ public class SmartPhoneResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getPhones(
-								@QueryParam("manufacturerFilter") final String manufacturer,
-								@QueryParam("modelFilter") final String model,
-								@QueryParam("cameraMPFilter") final Float cameraMP,
-								@QueryParam("procesorGHzFilter") final Float procesorGHz,
-								@QueryParam("yearFilter") final Integer year,
-								@QueryParam("memoryRamFilter") final Integer memoryRam
+			@DefaultValue("") @QueryParam("manufacturerFilter") final String manufacturer,
+			@DefaultValue("") @QueryParam("modelFilter") final String model,
+			@DefaultValue("-1") @QueryParam("cameraMPFilter") final Float cameraMP,
+			@DefaultValue("-1") @QueryParam("procesorGHzFilter") final Float procesorGHz,
+			@DefaultValue("-1") @QueryParam("yearFilter") final Integer year,
+			@DefaultValue("-1") @QueryParam("memoryRamFilter") final Float memoryRam
 			) {
 		
 		List<SmartPhone> phones = SmartPhoneData.getData().getPhones();
 		
-		if (manufacturer != null || !("".equals(manufacturer))) {
+		if (manufacturer != null && !("".equals(manufacturer))) {
+			System.out.println("Filter1");
 			phones = SmartPhoneData.filteredByManufacturer(manufacturer, phones);
 		}
-		if (model != null || !("".equals(model))) {
+		if (model != null && !("".equals(model))) {
+			System.out.println("Filter2");
 			phones = SmartPhoneData.filteredByModel(model, phones);
 		}
-		if (cameraMP != 0.0) {
+		if (cameraMP >= 0.0) {
+			System.out.println("Filter3");
 			phones = SmartPhoneData.filteredByCameraMP(cameraMP, phones);
 		}
-		if (procesorGHz != 0.0) {
+		if (procesorGHz >= 0.0) {
+			System.out.println("Filter4");
 			phones = SmartPhoneData.filteredByProcesorGHz(procesorGHz, phones);
 		}
-		if (year != 0) {
+		if (year >= 1900) {
+			System.out.println("Filter5");
 			phones = SmartPhoneData.filteredByYear(year, phones);
 		}
-		if (memoryRam != 0) {
+		if (memoryRam >= 0.0) {
+			System.out.println("Filter6");
 			phones = SmartPhoneData.filteredByMemoryRam(memoryRam, phones);
 		}
+		
 		return Response.ok(phones).build();
 	}
 	
