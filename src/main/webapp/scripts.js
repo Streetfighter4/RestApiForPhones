@@ -1,12 +1,17 @@
-function getData(filter) {
+var currPage = 1;
+
+function getData(arg) {
 	$.ajax({
 		url: "http://localhost:8080/rest/api/phones",
 		type: "GET",
 		dataType: "json",
-		data: filter,
+		data: arg,
 		success: function(data) {
-			console.log(data);
-			$("#phones-table-body tr").remove();
+			if (arg.newPage == undefined) {
+				$("#phones-table-body tr").remove();
+			} else {
+				currPage = arg.newPage+1; 
+			}
 			$.each(data, function(index){
 				var tr = $('<tr>');
 				tr.append('<td>' + data[index].id +'</td>');
@@ -24,7 +29,12 @@ function getData(filter) {
 }
 
 $(document).ready(function() {
-	getData("");
+	var indexPage = {
+		numberElement: 15,
+		newPage: currPage
+	};
+	getData(indexPage);
+	
 	
 	$('#new-phone-form').submit(function(e) {
 		e.preventDefault();
@@ -63,8 +73,17 @@ $(document).ready(function() {
 				procesorGHzFilter: $('#filter-phone-procesorGHz').val(),
 				yearFilter: $('#filter-phone-year').val(),
 				memoryRamFilter: $('#filter-phone-memoryRam').val()
-			}	
-		getData(filter);
-		
+		};	
+		getData(filter);	
 	});
+	
+	$(window).scroll(function() {
+		if ($(window).scrollTop() + $(window).height() >= $('body').height()) {
+			var indexPage = {
+				numberElement: 15,
+				newPage: currPage
+			};
+			getData(indexPage);
+		}
+	})
 });

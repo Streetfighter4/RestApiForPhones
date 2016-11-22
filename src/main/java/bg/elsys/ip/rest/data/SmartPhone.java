@@ -68,7 +68,5 @@ public class SmartPhone {
 	}
 	public void setMemoryRam(float memoryRam) {
 		this.memoryRam = memoryRam;
-	}
-	
-	
+	}	
 }

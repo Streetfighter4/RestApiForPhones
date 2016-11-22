@@ -21,6 +21,8 @@ public class SmartPhoneResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getPhones(
+			@DefaultValue("10") @QueryParam("numberElement") final int numberElement,
+			@DefaultValue("1") @QueryParam("newPage") final int newPage,
 			@DefaultValue("") @QueryParam("manufacturerFilter") final String manufacturer,
 			@DefaultValue("") @QueryParam("modelFilter") final String model,
 			@DefaultValue("-1") @QueryParam("cameraMPFilter") final Float cameraMP,
@@ -55,6 +57,11 @@ public class SmartPhoneResource {
 			System.out.println("Filter6");
 			phones = SmartPhoneData.filteredByMemoryRam(memoryRam, phones);
 		}
+		
+		
+		int start = Math.min((newPage-1)*numberElement, phones.size());
+		int end = Math.min((newPage-1)*numberElement + numberElement, phones.size());
+		phones = phones.subList(start, end);
 		
 		return Response.ok(phones).build();
 	}
