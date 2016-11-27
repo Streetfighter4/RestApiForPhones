@@ -49,10 +49,14 @@ public class SmartPhoneResource {
 			System.out.println("Filter4");
 			phones = SmartPhoneData.filteredByProcesorGHz(procesorGHz, phones);
 		}
+		System.out.println("Before fillter size " + phones.size());
+		
 		if (year >= 1900) {
 			System.out.println("Filter5");
 			phones = SmartPhoneData.filteredByYear(year, phones);
 		}
+		System.out.println("After fillter size " + phones.size());
+		
 		if (memoryRam >= 0.0) {
 			System.out.println("Filter6");
 			phones = SmartPhoneData.filteredByMemoryRam(memoryRam, phones);
@@ -60,9 +64,14 @@ public class SmartPhoneResource {
 		
 		
 		int start = Math.min((newPage-1)*numberElement, phones.size());
-		int end = Math.min((newPage-1)*numberElement + numberElement, phones.size());
+		int end = Math.min(newPage*numberElement, phones.size());
+		System.out.println("start " + start);
+		System.out.println("start1 " + (newPage-1)*numberElement);
+		System.out.println("end " + end);
+		System.out.println("end1 " + newPage*numberElement);
 		phones = phones.subList(start, end);
-		
+		System.out.println("After pagination");
+		System.out.println(phones.size());
 		return Response.ok(phones).build();
 	}
 	

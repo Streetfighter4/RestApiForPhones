@@ -10,7 +10,7 @@ public class SmartPhoneData {
 	
 	private SmartPhoneData() {
 		phones = new ArrayList<>();
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 25; i++) {
 			SmartPhone smartPhone= new SmartPhone("Samsung", "Galaxy", i*2f, 2+i*0.1f, 2010+i, 2^(i+1));
 			phones.add(smartPhone);
 		}
