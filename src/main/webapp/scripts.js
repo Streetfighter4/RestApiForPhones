@@ -104,4 +104,26 @@ $(document).ready(function() {
 			}
 		}
 	})
+	
+	
+    $.ajax({
+    	method: 'GET',
+		url: 'api/phones/manufacturer',
+		dataType: "json",
+		success: function(data) {
+			$( "#filter-phone-manufacturer" ).autocomplete({
+			      source: data
+			});
+		}
+    });
+    $.ajax({
+    	method: 'GET',
+		url: 'api/phones/model',
+		dataType: "json",
+		success: function(data) {
+			$( "#filter-phone-model" ).autocomplete({
+			      source: data
+			});
+		}
+    });	
 });

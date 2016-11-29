@@ -127,4 +127,24 @@ public class SmartPhoneData {
 		}
 		return filtered;
 	}
+	
+	public List<String> manufacturerNames() {
+		List<String> listManufacturerNames = new ArrayList<>();
+		for (SmartPhone smartPhone : phones) {
+			if (!listManufacturerNames.contains(smartPhone.getManufacturer())) {
+				listManufacturerNames.add(smartPhone.getManufacturer());
+			}
+		}
+		return listManufacturerNames;
+	}
+	
+	public List<String> modelNames() {
+		List<String> listModelNames = new ArrayList<>();
+		for (SmartPhone smartPhone : phones) {
+			if (!listModelNames.contains(smartPhone.getModel())) {
+				listModelNames.add(smartPhone.getModel());
+			}
+		}
+		return listModelNames;
+	}
 }

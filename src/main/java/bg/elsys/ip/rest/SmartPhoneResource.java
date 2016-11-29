@@ -15,14 +15,22 @@ import javax.ws.rs.core.Response.Status;
 
 import bg.elsys.ip.rest.data.SmartPhone;
 import bg.elsys.ip.rest.data.SmartPhoneData;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiParam;
 
 @Path("/phones")
 public class SmartPhoneResource {
 	@GET
+	@ApiImplicitParams({
+		    @ApiImplicitParam(name = "numberElement", value = "Number of element on one page", required = true, dataType = "int", paramType = "query"),
+		    @ApiImplicitParam(name = "newPage", value = "Current number of page's", required = true, dataType = "int", paramType = "query"),
+		    @ApiImplicitParam(name = "id", value = "User ID", required = true, dataType = "long", paramType = "query")
+	})
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getPhones(
-			@DefaultValue("10") @QueryParam("numberElement") final int numberElement,
-			@DefaultValue("1") @QueryParam("newPage") final int newPage,
+			@ApiParam(name = "numberElement", value = "Number of element on one page") @DefaultValue("10") @QueryParam("numberElement") final int numberElement,
+			@ApiParam(name = "newPage", value = "Which page of the data is return") @DefaultValue("1") @QueryParam("newPage") final int newPage,
 			@DefaultValue("") @QueryParam("manufacturerFilter") final String manufacturer,
 			@DefaultValue("") @QueryParam("modelFilter") final String model,
 			@DefaultValue("-1") @QueryParam("cameraMPFilter") final Float cameraMP,
@@ -62,18 +70,31 @@ public class SmartPhoneResource {
 			phones = SmartPhoneData.filteredByMemoryRam(memoryRam, phones);
 		}
 		
-		
 		int start = Math.min((newPage-1)*numberElement, phones.size());
 		int end = Math.min(newPage*numberElement, phones.size());
-		System.out.println("start " + start);
-		System.out.println("start1 " + (newPage-1)*numberElement);
-		System.out.println("end " + end);
-		System.out.println("end1 " + newPage*numberElement);
 		phones = phones.subList(start, end);
-		System.out.println("After pagination");
-		System.out.println(phones.size());
 		return Response.ok(phones).build();
 	}
+	@Path("/manufacturer")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getUniManufacturer() {
+		List<String> manufacturers = null;
+		manufacturers = SmartPhoneData.getData().manufacturerNames();
+		
+		return Response.ok(manufacturers).build();
+	}
+	
+	@Path("/model")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getUniModel() {
+		List<String> models = null;
+		models = SmartPhoneData.getData().modelNames();
+		
+		return Response.ok(models).build();
+	}
+	
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
