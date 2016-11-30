@@ -30,6 +30,25 @@ function getData(arg) {
 	});
 }
 
+function actionInFilter() {	
+	var data = {
+			manufacturerFilter: $('#filter-phone-manufacturer').val(),
+			modelFilter: $('#filter-phone-model').val(),
+			cameraMPFilter: $('#filter-phone-cameraMP').val(),
+			procesorGHzFilter: $('#filter-phone-procesorGHz').val(),
+			yearFilter: $('#filter-phone-year').val(),
+			memoryRamFilter: $('#filter-phone-memoryRam').val(),
+			newPage: 1,
+			numberElement: 15
+	};	
+	$("#phones-table-body tr").remove();
+	if (!sentRequest) {
+		currPage = 1;
+		getData(data);
+		sentRequest = true;
+	}
+}
+
 $(document).ready(function() {
 	var indexPage = {
 		numberElement: 15,
@@ -63,28 +82,7 @@ $(document).ready(function() {
 	    document.getElementById("new-phone-procesorGHz").value = "";
 	    document.getElementById("new-phone-year").value = "";
 	    document.getElementById("new-phone-memoryRam").value = "";
-	});
-	
-	$('#filter-phone-form').submit(function(e) {
-		e.preventDefault();
-		
-		var data = {
-				manufacturerFilter: $('#filter-phone-manufacturer').val(),
-				modelFilter: $('#filter-phone-model').val(),
-				cameraMPFilter: $('#filter-phone-cameraMP').val(),
-				procesorGHzFilter: $('#filter-phone-procesorGHz').val(),
-				yearFilter: $('#filter-phone-year').val(),
-				memoryRamFilter: $('#filter-phone-memoryRam').val(),
-				newPage: 1,
-				numberElement: 15
-		};	
-		$("#phones-table-body tr").remove();
-		if (!sentRequest) {
-			currPage = 1;
-			getData(data);
-			sentRequest = true;
-		}
-	});
+	})
 	
 	$(window).scroll(function() {
 		if ($(window).scrollTop() + $(window).height() >= $('body').height()) {

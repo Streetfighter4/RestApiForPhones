@@ -25,13 +25,12 @@
 	</form>
 	<h2>Let Filter</h2>
 	<form id="filter-phone-form">
-		<input type="text" id="filter-phone-manufacturer"/>
-		<input type="text" id="filter-phone-model"/>
-		<input type="number" step=0.01 id="filter-phone-cameraMP"/>
-		<input type="number" step=0.01 id="filter-phone-procesorGHz"/>
-		<input type="number" id="filter-phone-year"/>
-		<input type="number" step=0.01 id="filter-phone-memoryRam"/>
-		<input type="submit" value="FILTER">
+		<input type="text" id="filter-phone-manufacturer" onkeyup="actionInFilter()"/>
+		<input type="text" id="filter-phone-model" onkeyup="actionInFilter()"/>
+		<input type="number" step=0.01 id="filter-phone-cameraMP" onkeyup="actionInFilter()"/>
+		<input type="number" step=0.01 id="filter-phone-procesorGHz" onkeyup="actionInFilter()"/>
+		<input type="number" id="filter-phone-year" onkeyup="actionInFilter()"/>
+		<input type="number" step=0.01 id="filter-phone-memoryRam" onkeyup="actionInFilter()"/>
 	</form>
 	<table>
 		<thead>
