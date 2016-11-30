@@ -15,18 +15,15 @@ import javax.ws.rs.core.Response.Status;
 
 import bg.elsys.ip.rest.data.SmartPhone;
 import bg.elsys.ip.rest.data.SmartPhoneData;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @Path("/phones")
+@Api("SmartPhones")
 public class SmartPhoneResource {
 	@GET
-	@ApiImplicitParams({
-		    @ApiImplicitParam(name = "numberElement", value = "Number of element on one page", required = true, dataType = "int", paramType = "query"),
-		    @ApiImplicitParam(name = "newPage", value = "Current number of page's", required = true, dataType = "int", paramType = "query"),
-		    @ApiImplicitParam(name = "id", value = "User ID", required = true, dataType = "long", paramType = "query")
-	})
+	@ApiOperation(value = "Get methot for getting all of the data or filter items", response = SmartPhone.class, responseContainer = "List")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getPhones(
 			@ApiParam(name = "numberElement", value = "Number of element on one page") @DefaultValue("10") @QueryParam("numberElement") final int numberElement,
@@ -77,6 +74,7 @@ public class SmartPhoneResource {
 	}
 	@Path("/manufacturer")
 	@GET
+	@ApiOperation(value = "Get distinct manufacturers",  response = SmartPhone.class, responseContainer = "List")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getUniManufacturer() {
 		List<String> manufacturers = null;
@@ -87,6 +85,7 @@ public class SmartPhoneResource {
 	
 	@Path("/model")
 	@GET
+	@ApiOperation(value = "Get distinct models",  response = SmartPhone.class, responseContainer = "List")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getUniModel() {
 		List<String> models = null;
@@ -97,6 +96,7 @@ public class SmartPhoneResource {
 	
 	
 	@POST
+	@ApiOperation(value = "Create new smart phone", response = SmartPhone.class)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createPhone(SmartPhone phone) {
 		SmartPhoneData.getData().addPhone(phone);

@@ -1,13 +1,23 @@
 package bg.elsys.ip.rest.data;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+@ApiModel
 public class SmartPhone {
 	private static int countId = 0;
+	@ApiModelProperty(value = "Shows ID for smart phone")
 	private int id;
+	@ApiModelProperty(value = "Shows manufacturer for smart phone")
 	private String manufacturer;
+	@ApiModelProperty(value = "Shows model for smart phone")
 	private String model;
+	@ApiModelProperty(value = "Shows camera(MP) for smart phone")
 	private float cameraMP;
+	@ApiModelProperty(value = "Shows GHz of the processor for smart phone")
 	private float procesorGHz;
+	@ApiModelProperty(value = "Shows year on smart phone")
 	private int year;
+	@ApiModelProperty(value = "Shows RAM memory for smart phone")
 	private float memoryRam;
 	
 	public SmartPhone(String manufacturer, String model, float cameraMP,
